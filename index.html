@@ -19,7 +19,7 @@
   
   <a-scene id="scene" inspector-plugin-recast>
 
-    <!--Assets-->
+    <!--Recursos-->
     <a-assets>
       <a-asset-item id="shooter" src="./models/soldier/scene.gltf"></a-asset-item>
       <a-asset-item id="collider" src="./models/navmesh.gltf"></a-asset-item>
@@ -34,16 +34,16 @@
     <a-entity id="environment" environment="preset:default; skyType:gradient; lighting:point">
     </a-entity>
 
-    <!--Sounds-->
+    <!--Sonidos-->
     <a-entity id="sound1" sound="src: #shoot; poolSize:2; autoplay: false; volume: 1;loop:false"></a-entity>
     <a-entity id="sound2" sound="src: #footstep; poolSize:2;autoplay: false; volume: 4;loop:false"></a-entity>
 
 
-    <!--Light-->
+    <!--Luces-->
     <a-entity light="type: ambient; color: white; intensity:0.5"></a-entity>
     <a-entity light="type: directional; color: #EEE; intensity: 1" position="-1 1 0"></a-entity>
 
-    <!--Camera and Cursor-->
+    <!--Cámara y cursor-->
     <a-entity id="camera-rig" movement-controls="speed: 0.2; constrainToNavMesh: true" position="0 0 5">
       <a-entity id="camera" camera position="0 1.6 0"
       look-controls="pointerLockEnabled: false">
@@ -55,33 +55,33 @@
     </a-entity>
 
 
-    <!--Bullets-->
+    <!--Balas-->
     <a-entity bullets="position:0 0 -5"></a-entity>
 
-    <!-- Navigation Mesh -->
+    <!-- Malla de navegación -->
     <a-entity id="navigation-mesh" position="0 -1 0" gltf-model="#collider" visible="false" nav-mesh>
     </a-entity>
 
-    <!--Ground-->
+    <!--Terreno-->
     <a-plane id="ground" position="0 0 -15" rotation="-90 0 0" height="50" width="50" static-body
       visible="false">
     </a-plane>
 
-    <!--Left wall-->
+    <!--Muro izquierdo-->
     <a-box id="right-wall" material="color: #34548d" color="red" repeat="10 1 1" position="25 5 -15" rotation="0 -90 0"
       height="10" width="50" depth="1" static-body visible="true">
     </a-box>
-    <!--Right wall-->
+    <!--Muro derecho-->
     <a-box id="left-wall" material="color: #34548d" color="red" repeat="10 1 1" position="-25 5 -15" rotation="0 90 0"
       height="10" width="50" depth="1" static-body visible="true">
     </a-box>
 
-    <!--Back wall-->
+    <!--Muro atrás-->
     <a-box id="back-wall" material="color: #34548d" color="red" repeat="10 1 1" position="0 5 -40" rotation="0 0 0"
       height="10" width="50" depth="1" static-body visible="true">
     </a-box>
 
-    <!--Paintball Arena Walls-->
+    <!--Muro de la arena de paintball-->
     <a-entity>
       <a-plane src="#wallTexture" id="wall1" material="color: " geometry="height: 2.5; width: 25"
         position="8.24437 1.25 -16.52437" rotation="0 45 0" static-body visible="true">
