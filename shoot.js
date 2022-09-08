@@ -26,46 +26,46 @@ AFRAME.registerComponent("bullets", {
 
         var camera = document.querySelector("#camera").object3D;
 
-        //get the camera direction as Three.js Vector
+        //Obtener la dirección de la cámara como un vector de Three.js
         var direction = new THREE.Vector3();
         camera.getWorldDirection(direction);
 
-        //set the velocity and it's direction
+        //Establecer la velocidad y su dirección
         bullet.setAttribute("velocity", direction.multiplyScalar(-20));
 
         var scene = document.querySelector("#scene");
 
-        //set the bullet as the dynamic entity
+        //Establecer la bala como una entidad dinámica
         bullet.setAttribute("dynamic-body", {
           shape: "sphere",
           mass: "0",
         });
         bullet.setAttribute("visible", false);
 
-        //add the collide event listener to the bullet
+        //Agregar un escucha de eventos de colisión a la bala
         bullet.addEventListener("collide", this.removeBullet);
 
         scene.appendChild(bullet);
 
-        //shooting sound
+        //Sonido de disparo
         this.shootSound();
       }
     });
   },
   removeBullet: function (e) {
     var scene = document.querySelector("#scene");
-    //bullet element
+    //Elemento de la bala
     var element = e.detail.target.el;
 
-    //element which is hit
+    //Elemento que es golpeado
     var elementHit = e.detail.body.el;
 
-    //Create paint splash
+    //Crear una mancha de pintura
     var paint = document.createElement("a-entity");
     var pos = element.getAttribute("position")
     var rotate = elementHit.getAttribute("rotation")
 
-    //set the position, rotation, scale
+    //Establecer la posición, rotación y escala
     paint.setAttribute("position", {
       x: pos.x,
       y: pos.y,
@@ -82,7 +82,7 @@ AFRAME.registerComponent("bullets", {
       z: 2,
     });
 
-    //choose the paint splash image randomly
+    //Seleccionar la imagen de la mancha de forma aleatoria
     var colorNum = parseInt(Math.random() * 8 + 1)
 
     paint.setAttribute("material", {
@@ -98,10 +98,10 @@ AFRAME.registerComponent("bullets", {
     });
     scene.appendChild(paint)
 
-    //remove event listener
+    //Eliminar escucha de evento
     element.removeEventListener("collide", this.removeBullet);
 
-    //remove the bullets from the scene      
+    //Remover las balas de la escena     
     scene.removeChild(element);
   },
   shootSound: function () {
